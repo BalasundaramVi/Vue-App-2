@@ -25,3 +25,41 @@ const dbMenuRef = db.ref('menu');
 
 export default dbMenuRef;
 ```
+
+
+**Authentication:**
+```
+<script>
+import Firebase from 'firebase';
+
+export default {
+  methods: {
+    signIn() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      Firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch((err) => {
+          const errorCode = err.code;
+          const errorMessage = err.message;
+
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password!');
+          } else {
+            alerg(errorMessage);
+          }
+        })
+    },
+    signOut() {
+      Firebase.auth().signOut()
+        .then(() => {
+          alert('logged out');
+        }).catch((err) => {
+          alert('error');
+        })
+    }
+  }
+}
+
+</script>
+```
