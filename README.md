@@ -63,3 +63,86 @@ export default {
 
 </script>
 ```
+
+
+## Vue Router
+
+```
+const routes = [
+  { path: '/', name: 'homeLink', component: Home },
+  { path: '/menu', name: 'menuLink', component: Menu },
+  {
+    path: '/admin',
+    name: 'adminLink',
+    component: Admin,
+    beforeEnter: (to, from, next) => {
+      alert('This area is for authorized users only, please login to continue.');
+      next();
+    },
+  },
+  {
+    path: '/about',
+    name: 'aboutLink',
+    component: About,
+    children: [
+      { path: '/contact', name: 'contactLink', component: Contact },
+      { path: '/history', name: 'historyLink', component: History },
+      { path: '/delivery', name: 'deliveryLink', component: Delivery },
+      { path: '/ordering-guide', name: 'orderingGuideLink', component: OrderingGuide },
+    ],
+  },
+  { path: '*', redirect: '/' },
+];
+
+const router = new VueRouter({
+  routes,
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      };
+    }
+
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    return { x: 0, y: 0 };
+  },
+});
+
+
+new Vue({
+  render: h => h(App),
+  router,
+}).$mount('#app');
+
+```
+
+
+`beforeRouteEnter (to, from, next) {}` is called before the Vue instance is even created, so no properties of that instance can be accessed in that method.
+
+Instead you can do something like this:
+```
+beforeRouteEnter (to, from, next) {
+  next(vm => {
+    vm.name;
+  })
+}
+```
+Basically this is a callback to after the instance is created, and the first property (`vm`) takes the place of `this`.
+
+Sample exit guard for admin users not signing out before they leave:
+```
+beforeRouteLeave (to, from, next) {
+  if (confirm("Have you remembered to log out") === true) {
+    next();
+  } else {
+    next(false);
+  }
+}
+```
+
+
+### Defining Scroll Behavior

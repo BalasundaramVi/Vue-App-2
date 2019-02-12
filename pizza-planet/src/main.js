@@ -1,32 +1,29 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from './components/Home.vue';
-import Menu from './components/Menu.vue';
+import routes from './routes';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    component: Home,
-  },
-  {
-    path: '/menu',
-    component: Menu,
-  },
-  {
-    path: '*',
-    redirect: '/',
-  },
-];
-
 const router = new VueRouter({
   routes,
   mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      };
+    }
+
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    return { x: 0, y: 0 };
+  },
 });
 
 new Vue({

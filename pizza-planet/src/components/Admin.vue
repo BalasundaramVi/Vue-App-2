@@ -75,5 +75,12 @@ export default {
     ppNewPizza: NewPizza,
     ppLogin: Login,
   },
+  beforeRouteLeave (to, from, next) {
+    if (confirm("Have you remembered to log out") === true) {
+      next();
+    } else {
+      next(false);
+    }
+  }
 };
 </script>
