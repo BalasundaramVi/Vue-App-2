@@ -68,14 +68,14 @@ export default {
         }, {
           size: 12,
           price: 10.95,
-        }]
-      }
-    }
+        }],
+      },
+    };
   },
   methods: {
     addMenuItem() {
       dbMenuRef.push(this.newPizza);
-    }
-  }
-}
+    },
+  },
+};
 </script>

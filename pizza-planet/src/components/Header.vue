@@ -3,12 +3,12 @@
     <nav class="navbar navbar-toggleable-md navbar-light">
       <a class="navbar-brand" href="/">PIZZA PLANET</a>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">MENU</a>
-        </li>
+          <router-link :to="homeLink" tag="li">
+            <a class="nav-link">HOME</a>
+          </router-link>
+        <router-link :to="menuLink" tag="li">
+          <a class="nav-link">MENU</a>
+        </router-link>
       </ul>
     </nav>
   </header>
@@ -16,7 +16,13 @@
 
 <script>
 export default {
-}
+  data() {
+    return {
+      homeLink: '/',
+      menuLink: '/menu',
+    };
+  },
+};
 </script>
 
 <style>
@@ -32,7 +38,7 @@ header {
   flex-direction: row;
 }
 
-.nav-item {
+li {
   padding: 5px;
 }
 

@@ -67,70 +67,70 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        basket: [],
-        basketText: 'Your basket is empty!',
-        getMenuItems: {
-          1: {
-            name: 'Margherita',
-            description: 'A delicious tomato based pizza topped with mozzarella',
-            options: [{
-              size: 9,
-              price: 6.95,
-            }, {
-              size: 12,
-              price: 10.95,
-            }]
-          },
-          2: {
-            name: 'Pepperoni',
-            description: 'A delicious tomato based pizza topped with mozzarella and pepperoni',
-            options: [{
-              size: 9,
-              price: 7.95,
-            }, {
-              size: 12,
-              price: 12.95
-            }]
-          },
-          3: {
-            name: 'Ham and Pineapple',
-            description: 'A delicious tomato based pizza topped with mozzarella, ham and pineapple',
-            options: [{
-              size: 9,
-              price: 7.95,
-            }, {
-              size: 12,
-              price: 12.95
-            }]
-          }
-        }
+export default {
+  data() {
+    return {
+      basket: [],
+      basketText: 'Your basket is empty!',
+      getMenuItems: {
+        1: {
+          name: 'Margherita',
+          description: 'A delicious tomato based pizza topped with mozzarella',
+          options: [{
+            size: 9,
+            price: 6.95,
+          }, {
+            size: 12,
+            price: 10.95,
+          }],
+        },
+        2: {
+          name: 'Pepperoni',
+          description: 'A delicious tomato based pizza topped with mozzarella and pepperoni',
+          options: [{
+            size: 9,
+            price: 7.95,
+          }, {
+            size: 12,
+            price: 12.95,
+          }],
+        },
+        3: {
+          name: 'Ham and Pineapple',
+          description: 'A delicious tomato based pizza topped with mozzarella, ham and pineapple',
+          options: [{
+            size: 9,
+            price: 7.95,
+          }, {
+            size: 12,
+            price: 12.95,
+          }],
+        },
+      },
+    };
+  },
+  methods: {
+    addToBasket(item, option) {
+      this.basket.push({
+        name: item.name,
+        price: option.price,
+        size: option.size,
+        quantity: 1,
+      });
+    },
+    removeFromBasket(item) {
+      this.basket.splice(this.basket.indexOf(item), 1);
+    },
+    increaseQuantity(item) {
+      item.quantity += 1;
+    },
+    decreaseQuantity(item) {
+      item.quantity -= 1;
+
+      if (item.quantity === 0) {
+        this.removeFromBasket(item);
       }
     },
-    methods: {
-      addToBasket(item, option) {
-        this.basket.push({
-          name: item.name,
-          price: option.price,
-          size: option.size,
-          quantity: 1,
-        })
-      },
-      removeFromBasket(item) {
-        this.basket.splice(this.basket.indexOf(item), 1);
-      },
-      increaseQuantity(item) {
-        item.quantity++;
-      },
-      decreaseQuantity(item) {
-        item.quantity--;
-
-        if (item.quantity === 0) {
-          this.removeFromBasket(item);
-        }
-      }
-    }
-  }
+  },
+};
 </script>

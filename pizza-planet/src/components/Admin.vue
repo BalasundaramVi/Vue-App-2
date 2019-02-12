@@ -74,6 +74,6 @@ export default {
   components: {
     ppNewPizza: NewPizza,
     ppLogin: Login,
-  }
-}
+  },
+};
 </script>

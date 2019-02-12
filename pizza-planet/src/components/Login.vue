@@ -40,7 +40,7 @@ export default {
           } else {
             alerg(errorMessage);
           }
-        })
+        });
     },
     signOut() {
       Firebase.auth().signOut()
@@ -48,9 +48,9 @@ export default {
           alert('logged out');
         }).catch((err) => {
           alert('error');
-        })
-    }
-  }
-}
+        });
+    },
+  },
+};
 
 </script>
