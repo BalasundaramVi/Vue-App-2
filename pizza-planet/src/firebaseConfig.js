@@ -1,12 +1,3 @@
-# Vue App 2: Building a Full Stack App with Firebase, Vuex, and Router
-
-Second Vue App with Vuex, Firebase, and Router
-
-
-### Firebase
-
-**Configuration:**
-```
 import Firebase from 'firebase';
 
 // Initialize Firebase
@@ -24,4 +15,3 @@ const db = firebaseApp.database();
 const dbMenuRef = db.ref('menu');
 
 export default dbMenuRef;
-```
