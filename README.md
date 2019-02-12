@@ -97,19 +97,6 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode: 'history',
-  scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        selector: to.hash,
-      };
-    }
-
-    if (savedPosition) {
-      return savedPosition;
-    }
-
-    return { x: 0, y: 0 };
-  },
 });
 
 
@@ -146,3 +133,40 @@ beforeRouteLeave (to, from, next) {
 
 
 ### Defining Scroll Behavior
+
+```
+const router = new VueRouter({
+  routes,
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      };
+    }
+
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    return { x: 0, y: 0 };
+  },
+});
+```
+
+
+## VueX
+
+> VueX is a state management pattern plus library for managing Vue state. It is also a central central store for our state. It can also be used to gather data from other required sources.
+
+
+Cannot use asynchronous code inside mutations. Use actions instead.
+
+<img src="https://i.imgur.com/hN2SvIN.png" alt="img not found..." />
+
+
+
+## Binding Vuex to Firebase
+
+
+### Using VuexFire

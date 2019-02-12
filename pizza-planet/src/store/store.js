@@ -1,10 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import setUser from './actions';
-import * as mutations from './mutations';
-import * as getters from './getters';
-
 import menu from './modules/menu';
 import orders from './modules/orders';
 import users from './modules/users';
