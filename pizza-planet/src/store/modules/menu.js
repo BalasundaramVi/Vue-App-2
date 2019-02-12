@@ -1,3 +1,5 @@
+import { firebaseAction } from 'vuexfire';
+
 const state = {
   menuItems: [],
 };
@@ -7,7 +9,15 @@ const getters = {
 
 };
 
+const actions = {
+  setMenuRef: firebaseAction(({ bindFirebaseRef }, { ref }) => {
+    // this will unbind any previously bound ref to 'todos'
+    bindFirebaseRef('menuItems', ref);
+  }),
+};
+
 export default {
   state,
   getters,
+  actions,
 };

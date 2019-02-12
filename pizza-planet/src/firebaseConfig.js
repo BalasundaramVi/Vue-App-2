@@ -13,5 +13,6 @@ const config = {
 const firebaseApp = Firebase.initializeApp(config);
 const db = firebaseApp.database();
 const dbMenuRef = db.ref('menu');
+const dbOrdersRef = db.ref('orders');
 
-export default dbMenuRef;
+export { dbMenuRef, dbOrdersRef };

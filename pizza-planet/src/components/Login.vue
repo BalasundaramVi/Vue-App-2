@@ -3,7 +3,8 @@
 <div class="row">
   <div>
     <div>
-      <p>Logged in as: <br>{{ currentUser }}</p>
+      <p v-if="!currentUser">Please log in to continue</p>
+      <p v-else>Logged in as: <br>{{ currentUser }}</p>
     </div>
     <form>
       <div class="form-group">
@@ -27,7 +28,7 @@
 
 <script>
 import Firebase from 'firebase';
-import store from '../store/store.js'
+import store from '../store/store';
 
 Firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -35,7 +36,7 @@ Firebase.auth().onAuthStateChanged((user) => {
   } else {
     store.dispatch('setUser', null);
   }
-})
+});
 
 export default {
   methods: {
@@ -51,7 +52,7 @@ export default {
           if (errorCode === 'auth/wrong-password') {
             alert('Wrong password!');
           } else {
-            alerg(errorMessage);
+            alert(errorMessage);
           }
         });
     },
@@ -60,15 +61,23 @@ export default {
         .then(() => {
           alert('logged out');
         }).catch((err) => {
-          alert('error');
+          alert(err);
         });
     },
   },
   computed: {
     currentUser() {
       return this.$store.getters.currentUser;
-    }
-  }
+    },
+  },
 };
 
 </script>
+
+<style>
+
+form {
+  margin: 20px 0;
+}
+
+</style>

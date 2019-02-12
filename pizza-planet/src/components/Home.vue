@@ -12,11 +12,11 @@
 
 <script>
 export default {
-  method: {
+  methods: {
     goToMenu() {
-      this.$router.push({ name: 'menuLink' })
-    }
-  }
+      this.$router.push({ name: 'menuLink' });
+    },
+  },
 };
 </script>
 

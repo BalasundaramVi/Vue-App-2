@@ -12,7 +12,11 @@
     <div class="form-group row">
       <label class="col-sm-3">Description</label>
       <div class="col-sm-9">
-        <textarea type="text" class="form-control" rows="5" v-model="newPizza.description"></textarea>
+        <textarea
+          type="text"
+          class="form-control"
+          rows="5"
+          v-model="newPizza.description"></textarea>
       </div>
     </div>
 
@@ -54,7 +58,7 @@
 </template>
 
 <script>
-import dbMenuRef from '../firebaseConfig';
+import { dbMenuRef } from '../firebaseConfig';
 
 export default {
   data() {

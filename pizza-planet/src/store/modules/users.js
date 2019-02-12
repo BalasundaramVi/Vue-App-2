@@ -13,7 +13,7 @@ const mutations = {
     } else {
       Object.assign(state, { currentUser: null });
     }
-  }
+  },
 };
 
 const actions = {

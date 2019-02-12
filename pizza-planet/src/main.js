@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Accounting from 'accounting-js';
 
 import routes from './routes';
 import store from './store/store';
@@ -26,6 +27,8 @@ const router = new VueRouter({
     return { x: 0, y: 0 };
   },
 });
+
+Vue.filter('currency', val => Accounting.formatMoney(val));
 
 new Vue({
   render: h => h(App),

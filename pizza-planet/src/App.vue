@@ -29,15 +29,32 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import { dbMenuRef, dbOrdersRef } from './firebaseConfig';
 
 export default {
   components: {
     ppHeader: Header,
     ppFooter: Footer,
   },
+  created() {
+    this.$store.dispatch('setMenuRef', dbMenuRef);
+    this.$store.dispatch('setOrdersRef', dbOrdersRef);
+  },
 };
 </script>
 
 <style>
+
+header, footer {
+  background: #ECEEEF;
+  padding: 40px 0;
+  font-size: 1.2em;
+}
+
+.card {
+  background-color: #69AB64;
+  margin: 20px 0;
+  border-radius: 0;
+}
 
 </style>
