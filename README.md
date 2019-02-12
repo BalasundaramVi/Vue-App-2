@@ -170,3 +170,7 @@ Cannot use asynchronous code inside mutations. Use actions instead.
 
 
 ### Using VuexFire
+
+
+
+# DONE!
